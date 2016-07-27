@@ -10,7 +10,7 @@
         <!--First-->
         <scene sceneID="4tP-w1-U6E">
             <objects>
-                <viewController id="P6g-8C-Y9B" userLabel="First" sceneMemberID="viewController">
+                <viewController id="P6g-8C-Y9B" userLabel="First" customClass="FirstViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1HN-vQ-BE8"/>
                         <viewControllerLayoutGuide type="bottom" id="j9d-FV-Epr"/>
@@ -41,7 +41,7 @@
         <!--Second-->
         <scene sceneID="ewP-U0-dSI">
             <objects>
-                <viewController id="L3P-Wg-vk9" userLabel="Second" sceneMemberID="viewController">
+                <viewController id="L3P-Wg-vk9" userLabel="Second" customClass="SecondViewController" customModule="TodoList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EHn-TT-2BR"/>
                         <viewControllerLayoutGuide type="bottom" id="e7A-Ni-LyL"/>
