@@ -23,6 +23,14 @@ class FirstViewController: UIViewController, UITableViewDataSource {
 		return cell
 	}
 
+	// Delete task
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if (editingStyle == UITableViewCellEditingStyle.delete) {
+			todoList.remove(at: indexPath.row)
+			taskTable.reloadData()
+		}
+	}
+
 	// Reload task table view
 	override func viewWillAppear(_ animated: Bool) {
 		taskTable.reloadData()
