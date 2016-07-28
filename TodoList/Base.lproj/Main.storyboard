@@ -36,7 +36,7 @@
                             <constraint firstItem="j9d-FV-Epr" firstAttribute="top" secondItem="tqe-Oa-SuM" secondAttribute="bottom" id="ixr-FP-ZhR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="hAu-5Z-DuQ" userLabel="First"/>
+                    <tabBarItem key="tabBarItem" title="Task List" image="first" id="hAu-5Z-DuQ" userLabel="First"/>
                     <connections>
                         <outlet property="taskTable" destination="tqe-Oa-SuM" id="1lC-3U-VWQ"/>
                     </connections>
@@ -88,7 +88,7 @@
                             <constraint firstItem="9vi-8C-6tc" firstAttribute="centerX" secondItem="nqC-vs-3BJ" secondAttribute="centerX" id="mwD-tZ-78i"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="iXa-ni-Qmg" userLabel="Second"/>
+                    <tabBarItem key="tabBarItem" title="Add Task" image="second" id="iXa-ni-Qmg" userLabel="Second"/>
                     <connections>
                         <outlet property="todoText" destination="9vi-8C-6tc" id="hzk-qC-YrU"/>
                     </connections>
