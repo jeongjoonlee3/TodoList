@@ -14,12 +14,35 @@ struct Task {
 class TaskManager {
 	private var taskList = [Task]()
 
-	func addTask(title: String, description: String) {
+	func addTask(title: String, description: String) -> Bool {
+		// Do not add task on the task list
+		if title.isEmpty { return false }
+
+		// Add task to the task list
 		let task = Task(title: title, description: description)
 		taskList.append(task)
+		return true
 	}
 
-	func removeTask(index: Int) {
-		taskList.remove(at: index)
+	func removeTask(at index: Int) -> Bool {
+		// Remove task from the task list
+		if 0..<numberOfTasks() ~= index {
+			taskList.remove(at: index)
+			return true
+		}
+
+		// By default, do not remove task from the task list
+		return false
+	}
+
+	func numberOfTasks() -> Int {
+		return taskList.count
+	}
+
+	func findTasks(title: String) -> [Task]? {
+		let task = taskList.filter {$0.title == title}
+		if task.isEmpty { return nil }
+
+		return task
 	}
 }
