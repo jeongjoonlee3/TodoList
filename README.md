@@ -1,5 +1,5 @@
 # Todo List
-Todo list app which intend to learn iOS development
+Todo list app for practicing and learning iOS development.
 
 Functionality
 -------------
