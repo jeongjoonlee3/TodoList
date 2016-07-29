@@ -38,11 +38,4 @@ class TaskManager {
 	func numberOfTasks() -> Int {
 		return taskList.count
 	}
-
-	func findTasks(title: String) -> [Task]? {
-		let task = taskList.filter {$0.title == title}
-		if task.isEmpty { return nil }
-
-		return task
-	}
 }
