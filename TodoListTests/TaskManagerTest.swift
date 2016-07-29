@@ -33,24 +33,60 @@ class TaskManagerTest: XCTestCase {
 		XCTAssert(taskManager.addTask(title: "Title 0", description: "index 0"))
 		XCTAssert(taskManager.addTask(title: "Title 1", description: "index 1"))
 		XCTAssert(taskManager.addTask(title: "Title 2", description: "index 2"))
-		XCTAssert(taskManager.numberOfTasks() == 3)
+		XCTAssert(taskManager.addTask(title: "Title 1", description: "index 3"))
+		XCTAssert(taskManager.numberOfTasks() == 4)
 
 
 		// Out of bound index -> FAIL
-		XCTAssertFalse(taskManager.removeTask(at: 3))
+		XCTAssertFalse(taskManager.removeTask(at: 4))
 		XCTAssertFalse(taskManager.removeTask(at: 10))
+		XCTAssert(taskManager.numberOfTasks() == 4)
+
+		// Remove task at index 2 (description: index 2) -> PASS
+		XCTAssert(taskManager.removeTask(at: 2))
 		XCTAssert(taskManager.numberOfTasks() == 3)
 
-		// Remove task at index 2 (Title 2) -> PASS
-		XCTAssertFalse(taskManager.removeTask(at: 2))
+		// Remove task at index 0 (description: index 0) -> PASS
+		XCTAssert(taskManager.removeTask(at: 0))
 		XCTAssert(taskManager.numberOfTasks() == 2)
 
-		// Remove task at index 0 (Title 0) -> PASS
-		XCTAssertFalse(taskManager.removeTask(at: 0))
+		// Remove task at index 1 (description: index 3) -> PASS
+		XCTAssert(taskManager.removeTask(at: 1))
 		XCTAssert(taskManager.numberOfTasks() == 1)
 
-		// Remove task at index 0 (Title 1) -> PASS
-		XCTAssertFalse(taskManager.removeTask(at: 0))
+		// Remove task at index 0 (description: index 1) -> PASS
+		XCTAssert(taskManager.removeTask(at: 0))
 		XCTAssert(taskManager.numberOfTasks() == 0)
+	}
+
+	func testNumberOfTasks() {
+		let taskManager = TaskManager()
+		XCTAssertTrue(taskManager.numberOfTasks() == 0)
+
+		// Add tasks
+		XCTAssert(taskManager.addTask(title: "task 0", description: "index 0"))
+		XCTAssertTrue(taskManager.numberOfTasks() == 1)
+
+		XCTAssert(taskManager.addTask(title: "task 1", description: "index 1"))
+		XCTAssertTrue(taskManager.numberOfTasks() == 2)
+
+		XCTAssert(taskManager.addTask(title: "task 2", description: "index 2"))
+		XCTAssertTrue(taskManager.numberOfTasks() == 3)
+
+		XCTAssert(taskManager.addTask(title: "task 3", description: "index 3"))
+		XCTAssertTrue(taskManager.numberOfTasks() == 4)
+
+		// Remove tasks
+		XCTAssert(taskManager.removeTask(at: 0))
+		XCTAssertTrue(taskManager.numberOfTasks() == 3)
+
+		XCTAssert(taskManager.removeTask(at: 0))
+		XCTAssertTrue(taskManager.numberOfTasks() == 2)
+
+		XCTAssert(taskManager.removeTask(at: 0))
+		XCTAssertTrue(taskManager.numberOfTasks() == 1)
+
+		XCTAssert(taskManager.removeTask(at: 0))
+		XCTAssertTrue(taskManager.numberOfTasks() == 0)
 	}
 }
