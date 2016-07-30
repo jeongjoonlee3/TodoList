@@ -17,6 +17,15 @@ class TaskManagerTest: XCTestCase {
 		XCTAssertFalse(taskManager.addTask(title: "", description: "Some description"))
 		XCTAssert(taskManager.numberOfTasks() == 0)
 
+		// Adding task with 1 blank space title -> FAIL
+		XCTAssertFalse(taskManager.addTask(title: " ", description: "Some description"))
+		XCTAssert(taskManager.numberOfTasks() == 0)
+
+		// Adding task with 3 blank space title -> FAIL
+		XCTAssertFalse(taskManager.addTask(title: "   ", description: "Some description"))
+		XCTAssert(taskManager.numberOfTasks() == 0)
+
+
 		// Adding task with no description -> PASS
 		XCTAssert(taskManager.addTask(title: "Some title", description: ""))
 		XCTAssert(taskManager.numberOfTasks() == 1)
@@ -35,7 +44,6 @@ class TaskManagerTest: XCTestCase {
 		XCTAssert(taskManager.addTask(title: "Title 2", description: "index 2"))
 		XCTAssert(taskManager.addTask(title: "Title 1", description: "index 3"))
 		XCTAssert(taskManager.numberOfTasks() == 4)
-
 
 		// Out of bound index -> FAIL
 		XCTAssertFalse(taskManager.removeTask(at: 4))
@@ -57,6 +65,26 @@ class TaskManagerTest: XCTestCase {
 		// Remove task at index 0 (description: index 1) -> PASS
 		XCTAssert(taskManager.removeTask(at: 0))
 		XCTAssert(taskManager.numberOfTasks() == 0)
+	}
+
+	func testGetTask() {
+		let taskManager = TaskManager()
+
+		// Add some tasks to perform remove functionality
+		XCTAssert(taskManager.addTask(title: "Title 0", description: "index 0"))
+		XCTAssert(taskManager.addTask(title: "Title 1", description: "index 1"))
+		XCTAssert(taskManager.addTask(title: "Title 2", description: "index 2"))
+		XCTAssert(taskManager.addTask(title: "Title 1", description: "index 3"))
+
+		// Out of bound index -> FAIL
+		XCTAssertNil(taskManager.getTask(at: 4))
+		XCTAssertNil(taskManager.getTask(at: 5))
+		XCTAssertNil(taskManager.getTask(at: 10))
+
+		// Get task
+		for i in 0..<taskManager.numberOfTasks() {
+			XCTAssertNotNil(taskManager.getTask(at: i))
+		}
 	}
 
 	func testNumberOfTasks() {
