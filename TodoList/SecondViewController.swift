@@ -8,7 +8,7 @@
 
 import UIKit
 
-var todoList = [String]()
+var taskManager = TaskManager()
 
 class SecondViewController: UIViewController {
 
@@ -16,15 +16,17 @@ class SecondViewController: UIViewController {
 
 	@IBAction func addTask(_ sender: AnyObject) {
 		if todoText.text?.characters.count > 0 {
+			defer {
+				// Reset to initial state.
+				todoText.text = ""
+				self.view.endEditing(true)
+			}
+
 			// Add todo into list.
-			todoList.append(todoText.text!)
-
-			// Reset to initial state.
-			self.view.endEditing(true)
-			todoText.text = ""
-
-			// Return back to first controller.
-			self.tabBarController?.selectedIndex = 0
+			if taskManager.addTask(title: todoText.text!, description: "") {
+				// Return back to first controller.
+				self.tabBarController?.selectedIndex = 0
+			}
 		}
 	}
 

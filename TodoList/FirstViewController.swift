@@ -13,21 +13,26 @@ class FirstViewController: UIViewController, UITableViewDataSource {
 	@IBOutlet var taskTable: UITableView!
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return todoList.count
+		return taskManager.numberOfTasks()
 	}
 
 	// Insert tasks for each cells
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-		cell.textLabel?.text = todoList[indexPath.row]
+
+		if let task = taskManager.getTask(at: indexPath.row) {
+			cell.textLabel?.text = task.title
+		}
+
 		return cell
 	}
 
 	// Delete task
 	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
 		if (editingStyle == UITableViewCellEditingStyle.delete) {
-			todoList.remove(at: indexPath.row)
-			taskTable.reloadData()
+			if taskManager.removeTask(at: indexPath.row) {
+				taskTable.reloadData()
+			}
 		}
 	}
 
