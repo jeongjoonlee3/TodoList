@@ -16,8 +16,9 @@ class SecondViewController: UIViewController {
 
 	@IBAction func addTask(_ sender: AnyObject) {
 		if todoText.text?.characters.count > 0 {
+
+			// Always reset to inital state.
 			defer {
-				// Reset to initial state.
 				todoText.text = ""
 				self.view.endEditing(true)
 			}

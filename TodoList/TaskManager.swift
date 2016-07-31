@@ -17,12 +17,12 @@ class TaskManager {
 	private var taskList = [Task]()
 
 	func addTask(title: String, description: String) -> Bool {
-		// Do not add task on the task list
+		// Do not add task on the task list.
 		if title.trimmingCharacters(in: CharacterSet.whitespaces).isEmpty {
 			return false
 		}
 
-		// Add task to the task list
+		// Add task to the task list.
 		let task = Task(title: title, description: description)
 		taskList.append(task)
 		
@@ -30,17 +30,18 @@ class TaskManager {
 	}
 
 	func removeTask(at index: Int) -> Bool {
-		// Remove task from the task list
+		// Remove task from the task list.
 		if 0..<numberOfTasks() ~= index {
 			taskList.remove(at: index)
 			return true
 		}
 
-		// By default, do not remove task from the task list
 		return false
 	}
 
 	func getTask(at index: Int) -> Task? {
+
+		// Index out bound checking
 		if 0..<numberOfTasks() ~= index {
 			return taskList[index]
 		}
