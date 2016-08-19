@@ -15,7 +15,7 @@ class SecondViewController: UIViewController {
 	@IBOutlet var todoText: UITextField!
 
 	@IBAction func addTask(_ sender: AnyObject) {
-		if todoText.text?.characters.count > 0 {
+		if todoText.text!.characters.count > 0 {
 
 			// Always reset to inital state.
 			defer {
